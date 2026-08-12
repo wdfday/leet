@@ -1,0 +1,18 @@
+/*
+ * @lc app=leetcode id=3014 lang=golang
+ *
+ * [3014] Minimum Number of Pushes to Type Word I
+ */
+
+// @lc code=start
+func minimumPushes(word string) int {
+	n := len(word)
+	ans := 0
+	for i := 0; i < n; i++ {
+		ans += i/8 + 1
+	}
+
+	return ans
+}
+// @lc code=end
+

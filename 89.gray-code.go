@@ -6,7 +6,8 @@
 
 // @lc code=start
 func grayCode(n int) []int {
-    
+
 }
+
 // @lc code=end
 

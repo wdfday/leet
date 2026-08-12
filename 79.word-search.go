@@ -8,31 +8,34 @@
 func exist(board [][]byte, word string) bool {
 	m, n := len(board), len(board[0])
 
-	var dfs func(idx, i, j, prevI, prevJ int) bool
-	dfs = func(idx, i, j, prevI, prevJ int) bool {
-		if i < 0 || i >= m || j < 0 || j >= n || (i == prevI && j == prevJ) {
-			return false
-		}
-		if board[i][j] != word[idx] {
+	var dfs func(idx, i, j int) bool
+	dfs = func(idx, i, j int) bool {
+		if i < 0 || i >= m || j < 0 || j >= n || board[i][j] != word[idx] {
 			return false
 		}
 		if idx == len(word)-1 {
 			return true
 		}
 
+		tmp := board[i][j]
+		board[i][j] = '#' // đánh dấu đang dùng
+
 		dirs := [][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
+		found := false
 		for _, d := range dirs {
-			ni, nj := i+d[0], j+d[1]
-			if dfs(idx+1, ni, nj, i, j) {
-				return true
+			if dfs(idx+1, i+d[0], j+d[1]) {
+				found = true
+				break
 			}
 		}
-		return false
+
+		board[i][j] = tmp // backtrack, trả lại giá trị gốc
+		return found
 	}
 
 	for i := 0; i < m; i++ {
 		for j := 0; j < n; j++ {
-			if dfs(0, i, j, -1, -1) {
+			if dfs(0, i, j) {
 				return true
 			}
 		}

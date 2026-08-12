@@ -6,7 +6,8 @@
 
 // @lc code=start
 func canCompleteCircuit(gas []int, cost []int) int {
-    
+
 }
+
 // @lc code=end
 

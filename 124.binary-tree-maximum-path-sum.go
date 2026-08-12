@@ -14,7 +14,10 @@
  * }
  */
 func maxPathSum(root *TreeNode) int {
-    
+
+	res := math.MinInt32
+
 }
+
 // @lc code=end
 

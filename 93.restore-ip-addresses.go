@@ -6,7 +6,8 @@
 
 // @lc code=start
 func restoreIpAddresses(s string) []string {
-    
+
 }
+
 // @lc code=end
 

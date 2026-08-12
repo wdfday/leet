@@ -8,35 +8,31 @@
 func threeSumClosest(nums []int, target int) int {
 
 	n := len(nums)
-	sort.Ints(nums)
+	slices.Sort(nums)
 
-	// Initialize result with the first triplet sum
-	result := nums[0] + nums[1] + nums[2]
+	res := nums[0] + nums[1] + nums[2]
+
+	if n == 3 {
+		return res
+	}
 
 	for i := 0; i < n-2; i++ {
-		left := i + 1
-		right := n - 1
+		l, r := i+1, n-1
 
-		for left < right {
-			sum := nums[i] + nums[left] + nums[right]
+		for l < r {
+			sum := nums[i] + nums[l] + nums[r]
 
-			// Update result if current sum is closer to target
-			if abs(sum-target) < abs(result-target) {
-				result = sum
-			}
-
-			// If exact match, return immediately
-			if sum == target {
-				return sum
-			} else if sum < target {
-				left++
+			if abs(target-res) > abs(target-sum) {
+				res = sum
+			} else if sum > target {
+				r--
 			} else {
-				right--
+				l++
 			}
 		}
 	}
 
-	return result
+	return res
 
 }
 
