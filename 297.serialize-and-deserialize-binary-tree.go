@@ -66,7 +66,6 @@ func (this *Codec) deserialize(data string) *TreeNode {
     
 }
 
-
 /**
  * Your Codec object will be instantiated and called as such:
  * ser := Constructor();
