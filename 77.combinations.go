@@ -6,7 +6,6 @@
 
 // @lc code=start
 func combine(n int, k int) [][]int {
-
 	res := [][]int{}
 
 	var backtrack func(cur []int, start int)
@@ -16,11 +15,8 @@ func combine(n int, k int) [][]int {
 		}
 
 		for i := start; i < n+1; i++ {
-			cur = append(cur, i)
-			backtrack(cur, i+1)
-			cur = cur[:len(cur)-1]
+			backtrack(append(cur, i), i+1)
 		}
-
 	}
 	backtrack([]int{}, 1)
 	return res

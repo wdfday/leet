@@ -6,7 +6,6 @@
 
 // @lc code=start
 func subsets(nums []int) [][]int {
-
 	res := [][]int{}
 
 	var sub func(cur []int, start int)
@@ -14,13 +13,11 @@ func subsets(nums []int) [][]int {
 		res = append(res, append([]int{}, cur...))
 
 		for i := start; i < len(nums); i++ {
-			cur = append(cur, nums[i])
-			sub(cur, i+1)
-			cur = cur[:len(cur)-1]
+			sub(append(cur, nums[i]), i+1)
 		}
 	}
 
-	sub(make([]int, 0), 0)
+	sub([]int{}, 0)
 
 	return res
 }
